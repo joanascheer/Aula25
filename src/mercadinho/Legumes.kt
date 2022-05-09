@@ -1,4 +1,4 @@
 package mercadinho
 
-class Legumes (var quantidade: Int = 0): Produto("Legume") {
+class Legumes (var quantidadeLegumes: Int = 0): Produto("Legume") {
 }

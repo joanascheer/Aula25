@@ -1,5 +1,6 @@
 package mercadinho
 
 fun main() {
-    Menu()
+
+    Sistema()
 }

@@ -1,4 +1,4 @@
 package mercadinho
 
-class Grãos(var quantidade: Double = 0.0): Produto("Grão") {
+class Grãos(var quantidadeGraos: Double = 0.0): Produto("Grão") {
 }
