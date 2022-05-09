@@ -9,15 +9,16 @@ class Menu {
     }
 
     fun menu() {
-        try {
-            while (true) {
+
+        while (true) {
+            try {
                 println("Que tipo de alimento deseja inserir na sua cestinha?\n" +
                         "[1] Verdura\n" +
                         "[2] Legume\n" +
                         "[3] Grão\n" +
                         "[4] Outro\n" +
                         "[5] Sair do sistema")
-                when(readln()) {
+                when (readln()) {
                     "1" -> {
 
                     }
@@ -32,15 +33,15 @@ class Menu {
                     }
                     "5" -> {
 
-                    } else -> {
-                    println("Opção inválida")
-                    menu()
-                    }
+
+                    } else -> throw IllegalArgumentException()
 
                 }
+
+            } catch (e: IllegalArgumentException) {
+                println("Tipo de alimento inválido")
+                menu()
             }
-        } catch (e: IllegalArgumentException) {
-            println("Tipo de alimento inválido!")
         }
 
     }

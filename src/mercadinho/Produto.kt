@@ -1,4 +1,4 @@
 package mercadinho
 
-class Produto {
+open class Produto (var tipoDeProduto: String = "") {
 }

@@ -1,4 +1,4 @@
 package mercadinho
 
-class Outros {
+class Outros(var quantidade: Int = 0): Produto("Outros") {
 }
