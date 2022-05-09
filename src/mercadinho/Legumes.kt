@@ -1,0 +1,4 @@
+package mercadinho
+
+class Legumes {
+}
