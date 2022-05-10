@@ -17,7 +17,6 @@ class Verduras(override var nomeProduto: String = "",
             println("$tipoDeProduto:")
             nomeProduto = readln()
 
-
         } catch (e: NumberFormatException) {
             println("Para verdura, a quantidade deve ser informada com ponto.")
             criaObjVerdura()
