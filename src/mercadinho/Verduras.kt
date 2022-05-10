@@ -1,7 +1,7 @@
 package mercadinho
 
 class Verduras(override var nomeProduto: String = "",
-quantidade : Double = 0.0) : Produto(tipoDeProduto = "Verdura", nomeProduto) {
+               quantidade : Double = 0.0) : Produto(tipoDeProduto = "Verdura", nomeProduto) {
     var quantidadeVerdura = quantidade
 
 

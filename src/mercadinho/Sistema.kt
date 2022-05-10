@@ -2,6 +2,7 @@ package mercadinho
 
 class Sistema {
     val listaDeVerdura: MutableList<Verduras> = ArrayList()
+    val listaDeGrao: MutableList<Graos> = ArrayList()
 
     init {
         println("** Seja bem vindo(a) ao **\n" +
@@ -23,13 +24,12 @@ class Sistema {
                         "[5] Sair do sistema")
                 when (readln()) {
                     "1" -> {
-                        val verduritinha = Verduras().criaObjVerdura()
-                        listaDeVerdura.add(verduritinha)
-
-
+                        val verdura = Verduras().criaObjVerdura()
+                        listaDeVerdura.add(verdura)
                     }
                     "2" -> {
-
+                        val grao = Graos().criaObjGrao()
+                        listaDeGrao.add(grao)
                     }
                     "3" -> {
 
@@ -39,7 +39,7 @@ class Sistema {
                     }
                     "5" -> {
                         //Verduras().mostraListaVerdura(listaDeVerdura) -> só nao pega quantidade
-                        mostraLista(listaDeVerdura)
+                        mostraLista(listaDeVerdura,listaDeGrao)
                     } else -> throw IllegalArgumentException()
 
                 }
@@ -52,14 +52,16 @@ class Sistema {
 
     }
 
-    fun mostraLista(listaDeVerdura: MutableList<Verduras>) {
+    fun mostraLista(listaDeVerdura: MutableList<Verduras>, listaDeGrao: MutableList<Graos>) {
 
-        for (i in listaDeVerdura.indices) {
-            println("${listaDeVerdura[i]}")
-        }
+
         listaDeVerdura.forEach {
             println("${it.tipoDeProduto}: ${it.nomeProduto}\n" +
                     "Quantidade: ${it.quantidadeVerdura}\n")
+        }
+        listaDeGrao.forEach {
+            println("${it.tipoDeProduto}: ${it.nomeProduto}\n" +
+                    "Quantidade: ${it.quantidadeGrao}\n")
         }
     }
 

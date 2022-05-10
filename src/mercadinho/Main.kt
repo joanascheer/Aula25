@@ -2,5 +2,5 @@ package mercadinho
 
 fun main() {
 
-    Sistema()
+    var oi = Sistema()
 }
