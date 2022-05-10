@@ -15,12 +15,8 @@ class Verduras(override var nomeProduto: String = "",
             }
 
             println("$tipoDeProduto:")
-            if (nomeProduto.equals(Int) || nomeProduto.equals(Double)) {
-                println("O nome do produto deve ser composto por letras de A a Z.\n")
-                criaObjVerdura()
-            } else {
-                nomeProduto = readln()
-            }
+            nomeProduto = readln()
+
 
         } catch (e: NumberFormatException) {
             println("Para verdura, a quantidade deve ser informada com ponto.")
