@@ -22,11 +22,9 @@ class Legumes(
             println("Para legume, a quantidade deve ser informada em unidades inteiras.")
             criaObjLegume()
         } catch (e: UnsupportedOperationException) {
-            // todos os alimentos
             println("Não é permitido inserir valor vazio.")
             criaObjLegume()
         } catch (e: IllegalArgumentException) {
-            // todos os alimentos
             println("Não é possível inserir números negativos.")
             criaObjLegume()
         } catch (e: UnsupportedOperationException) {
@@ -36,12 +34,4 @@ class Legumes(
         return Legumes(nomeProduto, quantidadeLegume)
     }
 
-    fun mostraListaLegume(listaDeLegume: MutableList<Legumes>) {
-
-        listaDeLegume.forEach {
-            println("Produto: ${Verduras().tipoDeProduto}\n" +
-                    "Nome: ${it.nomeProduto}\n" +
-                    "Quantidade: ${quantidadeLegume}")
-        }
-    }
 }

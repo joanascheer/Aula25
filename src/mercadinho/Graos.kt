@@ -23,11 +23,9 @@ class Graos(
             println("Para grãos, a quantidade deve ser informada com ponto.")
             criaObjGrao()
         } catch (e: UnsupportedOperationException) {
-            // todos os alimentos
             println("Não é permitido inserir valor vazio.")
             criaObjGrao()
         } catch (e: IllegalArgumentException) {
-            // todos os alimentos
             println("Não é possível inserir números negativos.")
             criaObjGrao()
         } catch (e: UnsupportedOperationException) {
@@ -37,12 +35,4 @@ class Graos(
         return Graos(nomeProduto, quantidadeGrao)
     }
 
-    fun mostraListaGrao(listaDeGraos: MutableList<Graos>) {
-
-        listaDeGraos.forEach {
-            println("Produto: ${Verduras().tipoDeProduto}\n" +
-                    "Nome: ${it.nomeProduto}\n" +
-                    "Quantidade: ${quantidadeGrao}")
-        }
-    }
 }
