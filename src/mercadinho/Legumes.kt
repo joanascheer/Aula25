@@ -15,6 +15,9 @@ class Legumes(
             if (quantidade < 0) {
                 throw IllegalArgumentException()
             }
+            println("$tipoDeProduto:")
+            nomeProduto = readln()
+
         } catch (e: NumberFormatException) {
             println("Para legume, a quantidade deve ser informada em unidades inteiras.")
             criaObjLegume()
@@ -26,16 +29,8 @@ class Legumes(
             // todos os alimentos
             println("Não é possível inserir números negativos.")
             criaObjLegume()
-        }
-
-        try {
-            println("$tipoDeProduto:")
-            nomeProduto = readln()
         } catch (e: UnsupportedOperationException) {
             println("Não é permitido inserir nome vazio.")
-            criaObjLegume()
-        } catch (e: Exception) {
-            println("O nome do produto deve ser escrito com letras entre A e Z.")
             criaObjLegume()
         }
         return Legumes(nomeProduto, quantidadeLegume)

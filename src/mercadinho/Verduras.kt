@@ -14,6 +14,10 @@ class Verduras(override var nomeProduto: String = "",
             if (quantidadeVerdura < 0) {
                 throw IllegalArgumentException()
             }
+
+            println("$tipoDeProduto:")
+            nomeProduto = readln()
+
         } catch (e: NumberFormatException) {
             println("Para verdura, a quantidade deve ser informada com ponto.")
             criaObjVerdura()
@@ -25,16 +29,8 @@ class Verduras(override var nomeProduto: String = "",
             // todos os alimentos
             println("Não é possível inserir números negativos.")
             criaObjVerdura()
-        }
-
-        try {
-            println("$tipoDeProduto:")
-            nomeProduto = readln()
         } catch (e: UnsupportedOperationException) {
             println("Não é permitido inserir nome vazio.")
-            criaObjVerdura()
-        } catch (e: Exception) {
-            println("O nome do produto deve ser escrito com letras entre A e Z.")
             criaObjVerdura()
         }
         return Verduras(nomeProduto,quantidadeVerdura)

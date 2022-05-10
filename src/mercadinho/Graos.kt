@@ -15,6 +15,10 @@ class Graos(
             if (quantidadeGrao < 0) {
                 throw IllegalArgumentException()
             }
+
+            println("$tipoDeProduto:")
+            nomeProduto = readln()
+
         } catch (e: NumberFormatException) {
             println("Para grãos, a quantidade deve ser informada com ponto.")
             criaObjGrao()
@@ -26,16 +30,8 @@ class Graos(
             // todos os alimentos
             println("Não é possível inserir números negativos.")
             criaObjGrao()
-        }
-
-        try {
-            println("$tipoDeProduto:")
-            nomeProduto = readln()
         } catch (e: UnsupportedOperationException) {
             println("Não é permitido inserir nome vazio.")
-            criaObjGrao()
-        } catch (e: Exception) {
-            println("O nome do produto deve ser escrito com letras entre A e Z.")
             criaObjGrao()
         }
         return Graos(nomeProduto, quantidadeGrao)

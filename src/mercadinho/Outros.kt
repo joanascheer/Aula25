@@ -15,6 +15,10 @@ class Outros(
             if (quantidade < 0) {
                 throw IllegalArgumentException()
             }
+
+            println("$tipoDeProduto:")
+            nomeProduto = readln()
+
         } catch (e: NumberFormatException) {
             println("Para a categoria Outros, a quantidade deve ser informada em unidades inteiras.")
             criaObjOutro()
@@ -26,16 +30,8 @@ class Outros(
             // todos os alimentos
             println("Não é possível inserir números negativos.")
             criaObjOutro()
-        }
-
-        try {
-            println("$tipoDeProduto:")
-            nomeProduto = readln()
         } catch (e: UnsupportedOperationException) {
             println("Não é permitido inserir nome vazio.")
-            criaObjOutro()
-        } catch (e: Exception) {
-            println("O nome do produto deve ser escrito com letras entre A e Z.")
             criaObjOutro()
         }
         return Outros(nomeProduto, quantidadeOutros)
