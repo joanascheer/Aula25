@@ -43,13 +43,10 @@ class Graos(
 
     fun mostraListaGrao(listaDeGraos: MutableList<Graos>) {
 
-        for (i in listaDeGraos.indices) {
-            println("${listaDeGraos[i]}")
-        }
         listaDeGraos.forEach {
             println("Produto: ${Verduras().tipoDeProduto}\n" +
                     "Nome: ${it.nomeProduto}\n" +
-                    "Quantidade: ${Verduras().quantidadeVerdura}")
+                    "Quantidade: ${quantidadeGrao}")
         }
     }
 }

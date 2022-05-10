@@ -2,6 +2,8 @@ package mercadinho
 
 class Sistema {
     val listaDeVerdura: MutableList<Verduras> = ArrayList()
+    val listaDeLegume: MutableList<Legumes> = ArrayList()
+    val listaOutros: MutableList<Outros> = ArrayList()
     val listaDeGrao: MutableList<Graos> = ArrayList()
 
     init {
@@ -28,19 +30,22 @@ class Sistema {
                         listaDeVerdura.add(verdura)
                     }
                     "2" -> {
+                        val legume = Legumes().criaObjLegume()
+                        listaDeLegume.add(legume)
+                    }
+                    "3" -> {
                         val grao = Graos().criaObjGrao()
                         listaDeGrao.add(grao)
                     }
-                    "3" -> {
-
-                    }
                     "4" -> {
-
+                        val outro = Outros().criaObjOutro()
+                        listaOutros.add(outro)
                     }
                     "5" -> {
                         //Verduras().mostraListaVerdura(listaDeVerdura) -> só nao pega quantidade
-                        mostraLista(listaDeVerdura,listaDeGrao)
-                    } else -> throw IllegalArgumentException()
+                        mostraLista(listaDeVerdura, listaDeGrao, listaDeLegume, listaOutros)
+                    }
+                    else -> throw IllegalArgumentException()
 
                 }
 
@@ -52,7 +57,12 @@ class Sistema {
 
     }
 
-    fun mostraLista(listaDeVerdura: MutableList<Verduras>, listaDeGrao: MutableList<Graos>) {
+    fun mostraLista(
+        listaDeVerdura: MutableList<Verduras>,
+        listaDeGrao: MutableList<Graos>,
+        listaDeLegume: MutableList<Legumes>,
+        listaOutros: MutableList<Outros>,
+    ) {
 
 
         listaDeVerdura.forEach {
@@ -63,6 +73,14 @@ class Sistema {
             println("${it.tipoDeProduto}: ${it.nomeProduto}\n" +
                     "Quantidade: ${it.quantidadeGrao}\n")
         }
+        listaDeLegume.forEach {
+            println("${it.tipoDeProduto}: ${it.nomeProduto}\n" +
+                    "Quantidade: ${it.quantidadeLegume}\n")
+        }
+        listaOutros.forEach {
+            println("${it.tipoDeProduto}: ${it.nomeProduto}\n" +
+                    "Quantidade: ${it.quantidadeOutros}\n")
+        }
     }
 
 //    fun insereProdutoLista() : ArrayList<Produto> {
@@ -70,7 +88,6 @@ class Sistema {
 //
 //        println("Quantidade:")
 //    }
-
 
 
     companion object Utilities {

@@ -42,13 +42,10 @@ class Verduras(override var nomeProduto: String = "",
 
     fun mostraListaVerdura(listaDeVerdura: MutableList<Verduras>) {
 
-        for (i in listaDeVerdura.indices) {
-            println("${ listaDeVerdura[i] }")
-        }
         listaDeVerdura.forEach {
             println("Produto: ${Verduras().tipoDeProduto}\n" +
                     "Nome: ${it.nomeProduto}\n" +
-                    "Quantidade: ${Verduras().quantidadeVerdura}")
+                    "Quantidade: ${quantidadeVerdura}")
         }
     }
 }
