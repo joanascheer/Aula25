@@ -59,11 +59,19 @@ class Menu {
         }
 
         fun novaConversao() {
-            println("Deseja realizar uma nova conversão?\n" +
-                    "[1] SIM | [2] NÃO")
-            when(readln().toInt()) {
-                1 -> Menu().menuInicial()
+            try {
+                println("Deseja realizar uma nova conversão?\n" +
+                        "[1] SIM | [2] NÃO")
+                when(readln().toInt()) {
+                    1 -> Menu().menuInicial()
+                    2 -> sair()
+                    else -> throw IllegalArgumentException()
+                }
+            } catch (e: IllegalArgumentException) {
+                println("Opção inválida")
+                novaConversao()
             }
+
         }
     }
 

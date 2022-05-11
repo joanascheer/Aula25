@@ -1,6 +1,8 @@
 package conversorMoeda
 
 import java.math.BigDecimal
+import java.text.SimpleDateFormat
+import java.util.*
 
 class LibraEsterlina: Moeda() {
 
@@ -26,6 +28,14 @@ class LibraEsterlina: Moeda() {
 
     override fun converte(valor: BigDecimal) {
         val valorConvertido = valor * BigDecimal(6.33)
-        println("$valor £ convertido em R$$valorConvertido ")
+        println("A Libra Esterlina na cotação de hoje << ${formataData()} >> está em R$6,33.\n" +
+                "O valor que pediu para converter de $valor £ é R$ %.2f".format(valorConvertido))
     }
+
+    override fun formataData(): String {
+        val formato = "dd/MM/yyyy"
+        val simpleDateFormat = SimpleDateFormat(formato)
+        return simpleDateFormat.format(Date())
+    }
+
 }

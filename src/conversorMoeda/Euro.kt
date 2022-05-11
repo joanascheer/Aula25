@@ -1,6 +1,8 @@
 package conversorMoeda
 
 import java.math.BigDecimal
+import java.text.SimpleDateFormat
+import java.util.*
 
 class Euro : Moeda() {
     override fun recebeMoeda(): BigDecimal {
@@ -25,6 +27,14 @@ class Euro : Moeda() {
 
     override fun converte(valor: BigDecimal) {
         val valorConvertido = valor * BigDecimal(5.41)
-        println("$valor € convertido em R$$valorConvertido ")
+        println("O Euro na cotação de hoje << ${formataData()} >> está em R$5,41.\n" +
+                "O valor que pediu para converter de $valor € é R$ %.2f".format(valorConvertido))
     }
+
+    override fun formataData(): String {
+        val formato = "dd/MM/yyyy"
+        val simpleDateFormat = SimpleDateFormat(formato)
+        return simpleDateFormat.format(Date())
+    }
+
 }
