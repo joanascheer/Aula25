@@ -1,5 +1,6 @@
 package exercicioLivraria.menu
 
+import exercicioLivraria.colecao.Colecao
 import exercicioLivraria.estoque.Estoque
 import exercicioLivraria.livro.Livro
 import exercicioLivraria.utilitarios.Utilities
@@ -17,6 +18,8 @@ class Menu {
     }
 
     private val livro = Livro()
+    private val colecao = Colecao()
+
     internal fun menuprincipal(estoque: Estoque) {
         while (true) {
             try {
@@ -48,10 +51,12 @@ class Menu {
     private fun menuConsulta(estoque: Estoque) {
         println("Deseja consultar:\n" +
                 "[1] Livro\n" +
-                "[2] Coleção")
+                "[2] Coleção\n" +
+                "[3] Sair")
         when(readln().toInt()) {
             1 -> estoque.consultarLivroUnico()
-            2 -> {} //funcao ver lista de colecoes
+            2 -> estoque.consultarColecao()
+            3 -> sair()
         }
     }
 
@@ -60,7 +65,7 @@ class Menu {
                 "[1] Livro | [2] Coleção")
         when(readln().toInt()) {
             1 -> estoque.venderLivro(estoque.listaLivros)
-            2 -> {}
+            2 -> estoque.venderColecao()
         }
     }
 }
