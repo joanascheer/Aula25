@@ -13,7 +13,5 @@ class Utilities {
             exitProcess(0)
         }
 
-        var verificador: Boolean = false
-
     }
 }

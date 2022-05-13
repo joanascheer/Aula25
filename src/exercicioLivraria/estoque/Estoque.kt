@@ -5,6 +5,7 @@ import exercicioLivraria.livro.Livro
 import exercicioLivraria.menu.Menu
 import exercicioLivraria.utilitarios.Utilities.Utilities.sair
 
+@Suppress("NAME_SHADOWING")
 class Estoque {
 
     internal val listaLivros: ArrayList<Livro> = ArrayList()
