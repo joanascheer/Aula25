@@ -63,14 +63,26 @@ class Estoque {
                     "***********************\n")
             consultarLivroUnico()
         } else {
-            listaLivros.forEach {
-                println("O código $codigoDigitado teve os seguintes resultados:\n" +
-                        "Título: ${it.titulo}\n" +
-                        "Autor(a): ${it.autor}\n" +
-                        "Ano de lançamento: ${it.anoLancamento}\n" +
-                        "Preço: ${it.preco}\n" +
-                        "Quantidade em estoque: ${it.quantidadeEmEstoque}")
+
+            for (livro in listaLivros) {
+                if (codigoDigitado == livro.codigo) {
+                    listaLivros.forEach {
+                        println("********************************************************\n" +
+                                "O código $codigoDigitado obteve os seguintes resultados:\n" +
+                                "********************************************************\n" +
+                                "| Título: ${it.titulo}\n" +
+                                "| Autor(a): ${it.autor}\n" +
+                                "| Ano de lançamento: ${it.anoLancamento}\n" +
+                                "| Preço: ${it.preco}\n" +
+                                "| Quantidade em estoque: ${it.quantidadeEmEstoque}\n" +
+                                "------------------------------------------------------\n")
+                    }
+                } else {
+                    println("Livro não encontrado! Tente novamente!")
+                    consultarLivroUnico()
+                }
             }
+
         }
 
     }
@@ -94,7 +106,6 @@ class Estoque {
         }
     }
 
-    //quebrou aqui, arrumar logica
     internal fun venderLivro(listaLivros: ArrayList<Livro>): ArrayList <Livro> {
 
         println("Digite o código do livro a ser vendido:")
@@ -121,9 +132,14 @@ class Estoque {
                             break
                     }
                 } else {
-                    var novaQuantidade = livro.quantidadeEmEstoque - quantidadeVendida
+                    val novaQuantidade = livro.quantidadeEmEstoque - quantidadeVendida
                     livro.quantidadeEmEstoque = novaQuantidade
+                    println("$quantidadeVendida livros ${livro.titulo} foram vendidos!\n" +
+                            "Ainda existem ${livro.quantidadeEmEstoque} exemplares no estoque!\n")
                 }
+            } else {
+                println("Livro não encontrado!")
+                venderLivro(listaLivros)
             }
         }
 
