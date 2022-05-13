@@ -59,7 +59,7 @@ class Menu {
         println("Você deseja vender:\n" +
                 "[1] Livro | [2] Coleção")
         when(readln().toInt()) {
-            1 -> estoque.venderLivro(livro)
+            1 -> estoque.venderLivro(estoque.listaLivros)
             2 -> {}
         }
     }

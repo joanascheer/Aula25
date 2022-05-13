@@ -26,7 +26,7 @@ class Estoque {
 
     }
 
-    fun registraColecao() : ArrayList<Livro> {
+    fun registraColecao(): ArrayList<Livro> {
 
         val colecao = Colecao()
 
@@ -94,40 +94,40 @@ class Estoque {
         }
     }
 
-//quebrou aqui, arrumar logica
-    internal fun venderLivro(livro: Livro) : Int{
+    //quebrou aqui, arrumar logica
+    internal fun venderLivro(listaLivros: ArrayList<Livro>): ArrayList <Livro> {
 
         println("Digite o código do livro a ser vendido:")
         val codigoLivroVendido = readln().toInt()
-        println("Quantos livros serão vendidos?")
-        val quantidadeVendida = readln().toInt()
 
-        if (quantidadeVendida > livro.quantidadeEmEstoque) {
-            println("Não há quantidade suficiente de exemplares disponíveis para venda.")
-        } else if (quantidadeVendida == livro.quantidadeEmEstoque) {
-            for (livro in listaLivros) {
-                if (codigoLivroVendido == livro.codigo) {
-                    listaLivros.remove(livro)
-                    println("Venda realizada com sucesso, estoque vazio!\n" +
-                            "Deseja cadastrar mais exemplares?\n" +
-                            "[1] Sim | [2] Não")
-                    when(readln().toInt()) {
-                        1 -> registraLivro()
-                        2 -> sair()
+        for (livro in listaLivros) {
+            if (codigoLivroVendido == livro.codigo) {
+                println("Quantos livros serão vendidos?")
+                val quantidadeVendida = readln().toInt()
+
+                if (quantidadeVendida > livro.quantidadeEmEstoque) {
+                    println("Não há quantidade suficiente de exemplares disponíveis para venda.")
+                    venderLivro(listaLivros)
+                } else if (quantidadeVendida == livro.quantidadeEmEstoque) {
+                    for (livro in listaLivros) {
+                            listaLivros.remove(livro)
+                            println("Venda realizada com sucesso, estoque vazio!\n" +
+                                    "Deseja cadastrar mais exemplares?\n" +
+                                    "[1] Sim | [2] Não")
+                            when (readln().toInt()) {
+                                1 -> registraLivro()
+                                2 -> sair()
+                            }
+                            break
                     }
-                    break
                 } else {
-                    println("Livro não cadastrado!")
-                    venderLivro(livro)
+                    var novaQuantidade = livro.quantidadeEmEstoque - quantidadeVendida
+                    livro.quantidadeEmEstoque = novaQuantidade
                 }
             }
         }
-        else {
-            val novaQuantidade = livro.quantidadeEmEstoque - quantidadeVendida
-            livro.quantidadeEmEstoque = novaQuantidade
-        }
 
-        return livro.quantidadeEmEstoque
+        return listaLivros
 
     }
 
