@@ -3,22 +3,30 @@ package exercicioLivraria.colecao
 import exercicioLivraria.livro.Livro
 
 class Colecao(
-    var codigoColecao: Int = 0,
-    internal var precoColecao: Double = 0.0,
-    var descricaoColecao: String = "",
-    val listaColecao: ArrayList <Livro> = ArrayList(),
+    private var codigoColecao: Int = 0,
+    private var precoColecao: Double = 0.0,
+    private var descricaoColecao: String = "",
+    private val listaColecao: ArrayList<Livro> = ArrayList(),
     var quantidadeEmEstoqueColecao: Int = 0,
 ) {
 
-    fun pegaCodigoColecao() : Int {
+    fun retornaListaColecao() : ArrayList<Livro> = listaColecao
+
+    fun pegaCodigoColecao(): Int {
         println("Digite o código da coleção:")
         codigoColecao = readln().toInt()
         return codigoColecao
     }
 
-    fun pegaPrecoColecao() : Double {
+    fun retornaCodigoColecao(): Int = codigoColecao
+
+    fun pegaPrecoColecao(): Double {
         println("Digite o preço da Coleção:")
         precoColecao = readln().toDouble()
+        return precoColecao
+    }
+
+    fun retornaPrecoColecao() : Double {
         return precoColecao
     }
 
@@ -27,11 +35,14 @@ class Colecao(
         descricaoColecao = readln()
     }
 
-    fun pegaQuantidadeEstoqueColecao() : Int{
+    fun retornaDescricaoColecao() : String{
+        return descricaoColecao
+    }
+
+    fun pegaQuantidadeEstoqueColecao(): Int {
         println("Digite a quantidade desta coleção em estoque")
         quantidadeEmEstoqueColecao = readln().toInt()
         return quantidadeEmEstoqueColecao
     }
-
 
 }

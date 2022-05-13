@@ -15,6 +15,5 @@ class Utilities {
 
         var verificador: Boolean = false
 
-
     }
 }

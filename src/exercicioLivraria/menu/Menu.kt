@@ -1,9 +1,6 @@
 package exercicioLivraria.menu
 
-import exercicioLivraria.colecao.Colecao
 import exercicioLivraria.estoque.Estoque
-import exercicioLivraria.livro.Livro
-import exercicioLivraria.utilitarios.Utilities
 import exercicioLivraria.utilitarios.Utilities.Utilities.sair
 
 class Menu {
@@ -13,21 +10,17 @@ class Menu {
                 "  * Baleia Bookstore *  \n")
 
         val estoque = Estoque()
-        val livro = Livro()
         menuprincipal(estoque)
     }
 
-    private val livro = Livro()
-    private val colecao = Colecao()
-
-    internal fun menuprincipal(estoque: Estoque) {
+    private fun menuprincipal(estoque: Estoque) {
         while (true) {
             try {
                 println("O que deseja fazer?\n" +
                         "[1] Cadastrar livro\n" +
                         "[2] Cadastrar coleção\n" +
                         "[3] Consultar livro\n" +
-                        "[4] Efetuar venda\n" + //lista ou coleção? menu secundario
+                        "[4] Efetuar venda\n" +
                         "[5] Sair do sistema")
                 when (readln().toInt()) {
                     1 -> estoque.registraLivro()
@@ -53,7 +46,7 @@ class Menu {
                 "[1] Livro\n" +
                 "[2] Coleção\n" +
                 "[3] Sair")
-        when(readln().toInt()) {
+        when (readln().toInt()) {
             1 -> estoque.consultarLivroUnico()
             2 -> estoque.consultarColecao()
             3 -> sair()
@@ -63,7 +56,7 @@ class Menu {
     private fun menuVenda(estoque: Estoque) {
         println("Você deseja vender:\n" +
                 "[1] Livro | [2] Coleção")
-        when(readln().toInt()) {
+        when (readln().toInt()) {
             1 -> estoque.venderLivro(estoque.listaLivros)
             2 -> estoque.venderColecao()
         }
