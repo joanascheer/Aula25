@@ -47,8 +47,8 @@ class Menu {
                 "[2] Coleção\n" +
                 "[3] Sair")
         when (readln().toInt()) {
-            1 -> estoque.consultarLivroUnico()
-            2 -> estoque.consultarColecao()
+            1 -> estoque.consultarLivroUnico(estoque.listaLivros)
+            2 -> estoque.consultarColecao(estoque.listaDeColecoes)
             3 -> sair()
         }
     }
@@ -61,4 +61,5 @@ class Menu {
             2 -> estoque.venderColecao()
         }
     }
+
 }

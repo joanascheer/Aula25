@@ -2,12 +2,13 @@ package exercicioLivraria.estoque
 
 import exercicioLivraria.colecao.Colecao
 import exercicioLivraria.livro.Livro
+import exercicioLivraria.menu.Menu
 import exercicioLivraria.utilitarios.Utilities.Utilities.sair
 
 class Estoque {
-    internal val listaLivros: ArrayList<Livro> = ArrayList()
 
-    private val listaDeColecoes = ArrayList<Colecao>()
+    internal val listaLivros: ArrayList<Livro> = ArrayList()
+    internal val listaDeColecoes = ArrayList<Colecao>()
 
 
     fun registraLivro(): Livro {
@@ -55,63 +56,94 @@ class Estoque {
         return colecao
     }
 
-    fun consultarColecao() {
-        println("Digite o código da coleção que deseja buscar")
-        val codigoDigitadoColecao = readln().toInt()
+    fun consultarColecao(listaDeColecoes: ArrayList<Colecao>) {
 
-        for (colecao in listaDeColecoes) {
-            if (codigoDigitadoColecao == colecao.retornaCodigoColecao()) {
-                println("O código $codigoDigitadoColecao retornou o seguinte resultado:\n" +
-                        "Descrição da coleção: ${colecao.retornaDescricaoColecao()}\n" +
-                        "Preço: ${colecao.retornaPrecoColecao()}\n" +
-                        "Quantidade de coleção em estoque: ${colecao.quantidadeEmEstoqueColecao}\n")
-                for (livro in colecao.retornaListaColecao()) {
-                    println("\"-------------------------------------------\n" +
-                            "Título: ${livro.titulo}\n" +
-                            "Autor: ${livro.autor}\n" +
-                            "Ano de lançamento: ${livro.anoLancamento}\n")
+        try {
+            for (colecao in listaDeColecoes) {
+                if (listaDeColecoes.isEmpty()) {
+                    println("**************************\n" +
+                            "Nenhuma coleção cadastrada\n" +
+                            "**************************\n")
+                } else {
+                    println("Digite o código do livro que deseja buscar")
+                    val codigoDigitado = readln().toInt()
+
+                    if (codigoDigitado < 0) {
+                        throw NumberFormatException()
+                    }
+
+                    if (codigoDigitado == colecao.retornaCodigoColecao()) {
+
+                        println("O código ${colecao.retornaCodigoColecao()} retornou o seguinte resultado:\n" +
+                                "Descrição da coleção: ${colecao.retornaDescricaoColecao()}\n" +
+                                "Preço: ${colecao.retornaPrecoColecao()}\n" +
+                                "Quantidade em estoque: ${colecao.quantidadeEmEstoqueColecao}")
+
+                        for (livro in colecao.retornaListaColecao()) {
+                            println("Livro: ${livro.titulo}\n" +
+                                    "Autor: ${livro.autor}\n" +
+                                    "Ano de lançamento: ${livro.anoLancamento}")
+                        }
+
+                        Menu()
+
+                    } else {
+                        println("Coleção não encontrada.")
+                        consultarColecao(listaDeColecoes)
+                    }
+
                 }
             }
+        } catch (e: NumberFormatException) {
+            println("Formato inválido. Tente novamente.")
+            consultarColecao(listaDeColecoes)
+        } catch (e: IllegalArgumentException) {
+            println("O código não pode ser um número vazio.")
+            consultarColecao(listaDeColecoes)
+        } catch (e: Exception) {
+            println("Código inválido.")
+            consultarColecao(listaDeColecoes)
         }
     }
 
-    fun consultarLivroUnico() {
+    fun consultarLivroUnico(listaLivros: ArrayList<Livro>) {
         try {
-            println("Digite o código do livro que deseja buscar")
-            val codigoDigitado = readln().toInt()
 
-            if (listaLivros.isEmpty()) {
-                println("***********************\n" +
-                        "Nenhum livro cadastrado\n" +
-                        "***********************\n")
-                consultarLivroUnico()
-            } else {
+            for (livro in listaLivros) {
 
-                for (livro in listaLivros) {
+                if (listaLivros.isEmpty()) {
+                    println("***********************\n" +
+                            "Nenhum livro cadastrado\n" +
+                            "***********************\n")
+                    consultarLivroUnico(listaLivros)
+
+                } else {
+
+                    println("Digite o código do livro que deseja buscar")
+                    val codigoDigitado = readln().toInt()
+
                     if (codigoDigitado == livro.codigo) {
-                        listaLivros.forEach {
-                            println("********************************************************\n" +
-                                    "O código ${livro.codigo} obteve os seguintes resultados:\n" +
-                                    "********************************************************\n" +
-                                    "| Título: ${it.titulo}\n" +
-                                    "| Autor(a): ${it.autor}\n" +
-                                    "| Ano de lançamento: ${it.anoLancamento}\n" +
-                                    "| Preço: ${it.preco}\n" +
-                                    "| Quantidade em estoque: ${it.quantidadeEmEstoque}\n" +
-                                    "------------------------------------------------------\n")
-                        }
-                    } else if (codigoDigitado < 0) {
-                        throw NumberFormatException()
+                        println("O código ${livro.codigo} retornou o seguinte resultado:\n" +
+                                "Título: ${livro.titulo}\n" +
+                                "Autor: ${livro.autor}\n" +
+                                "Ano de lançameto: ${livro.anoLancamento}\n" +
+                                "Quantidade no estoque: ${livro.quantidadeEmEstoque}\n" +
+                                "Preço: ${livro.preco}")
+
+                        Menu()
+
                     } else {
-                        println("Livro não cadastrado")
-                        consultarLivroUnico()
+                        println("Código não encontrado.")
+                        consultarLivroUnico(listaLivros)
                     }
                 }
+
             }
+
 
         } catch (e: NumberFormatException) {
             println("Código inválido, tente novamente.")
-            consultarLivroUnico()
+            consultarLivroUnico(listaLivros)
         }
     }
 
