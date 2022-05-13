@@ -22,8 +22,6 @@ class Estoque {
 
         listaLivros.add(livroCriado)
 
-        //verificaLivroRepetido(livroCriado.codigo, livroCriado)
-
         return livroCriado
 
     }
@@ -144,25 +142,6 @@ class Estoque {
         } catch (e: NumberFormatException) {
             println("Código inválido, tente novamente.")
             consultarLivroUnico(listaLivros)
-        }
-    }
-
-    private fun verificaLivroRepetido(codigo: Int, livro: Livro) {
-
-        var verifica = false
-
-        for (i in listaLivros.indices) {
-            when (codigo) {
-                listaLivros[i].codigo -> {
-                    verifica = true
-                }
-            }
-        }
-
-        if (verifica) {
-            println("Você já tem este livro no seu estoque.\n" +
-                    "Cadastre com um código diferente.")
-            registraLivro()
         }
     }
 
